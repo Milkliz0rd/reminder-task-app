@@ -118,7 +118,7 @@ L'email est envoyé par un cron job Node.js via Nodemailer — cette fonctionnal
 |---|---|---|
 | Backend | Node.js + Express | Maîtrise existante, léger, adapté pour une API REST |
 | Base de données | PostgreSQL | BDD relationnelle — couvre la compétence SQL manquante |
-| ORM | `pg` (driver natif) ou Prisma | À décider — voir section "Décisions ouvertes" |
+| ORM | `pg` (driver natif) | Décidé : SQL visible au jury, meilleur pour démontrer CCP2 |
 | Authentification | JWT (`jsonwebtoken`) + `bcrypt` | Standard industriel, démontrable, bien documenté |
 | Email | Nodemailer + Mailtrap (dev) + SMTP réel (démo) | Intégration réelle, testable en local |
 | Cron | `node-cron` | Simple, intégré au process Node.js |
@@ -236,20 +236,17 @@ jobs:
 
 ---
 
+## Décisions prises (2026-04-29)
+
+| Décision | Choix retenu | Justification |
+|---|---|---|
+| ORM ou driver natif | `pg` natif | SQL brut visible au jury → valide CCP2 "composants d'accès données SQL" |
+| PostgreSQL local ou Docker | Local (pas Docker) | Docker déjà couvert par le projet Osol — pas de doublon |
+| Architecture backend | En couches (routes / controllers / services / db) | Défendable au jury CCP2 "organisée en couches" |
+
 ## Décisions ouvertes (à trancher par Alex)
 
-1. **ORM ou driver natif ?**
-   - `pg` natif : plus de SQL visible → meilleur pour montrer la compétence SQL au jury
-   - Prisma : plus productif, moins de SQL brut écrit à la main
-   - → Réfléchis à ce que tu veux montrer au jury avant de choisir
-
-2. **Structure du projet backend**
-   - Flat (routes + controllers dans un seul dossier) ou architecture en couches
-     (routes / controllers / services / repositories) ?
-   - L'architecture en couches est plus défendable devant le jury (CCP2 = "organisée
-     en couches")
-
-3. **Email de démo**
+1. **Email de démo**
    - Mailtrap pour les tests (emails interceptés, pas envoyés)
    - Un vrai compte SMTP (Gmail SMTP, Resend, Brevo) pour la démo jury
    - → Prévoir les deux dans la config via variable d'env
@@ -286,11 +283,11 @@ task-reminder/
 > Phases 1 à 5 (code + sections dossier correspondantes) doivent être terminées avant cette date.
 > Alex travaille le soir en semaine uniquement (pas le week-end).
 
-### Phase 1 — Setup · _30 avr – 4 mai_
-- [ ] Initialiser le repo Git + GitHub
-- [ ] Scaffolder le backend Express
-- [ ] Configurer PostgreSQL (local ou Docker)
-- [ ] Créer le schéma SQL (migration manuelle ou script `init.sql`)
+### Phase 1 — Setup · _30 avr – 4 mai_ · 🟡 En cours
+- [x] Initialiser le repo Git + GitHub ✅ 2026-04-29
+- [x] Scaffolder le backend Express ✅ 2026-04-29 (`server.js` + `src/app.js`, Express + nodemon)
+- [x] Configurer PostgreSQL local ✅ 2026-04-29 (v18, base `task_reminder` créée)
+- [ ] Créer le schéma SQL (script `init.sql`)
 - [ ] Configurer GitHub Actions (pipeline vide qui passe)
 - [ ] **DOSSIER** — Rédiger : architecture logicielle, justification stack, MCD + MPD
 
