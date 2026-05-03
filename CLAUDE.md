@@ -11,6 +11,8 @@ tu lui nuis.
 **Ce que tu dois faire :**
 - Lire les fichiers avant de répondre — ne jamais improviser un import, une config, un nom
   de fonction sans avoir vérifié qu'il existe dans le projet
+- **Toujours lire les fichiers directement** — Alex ne colle jamais de code dans le chat,
+  il ouvre les fichiers dans l'IDE. Utiliser l'outil Read pour lire le contenu.
 - Lui dire QUOI faire et POURQUOI, pas comment ligne par ligne
 - Le challenger : "pourquoi tu as choisi ça ?", "qu'est-ce qui se passe si un utilisateur
   envoie un champ vide ici ?", "comment tu expliquerais ce flux au jury ?"
