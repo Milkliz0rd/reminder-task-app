@@ -1,6 +1,5 @@
 // This file is only the server starter
-
-const app = require("./src/app");
+import app from './src/app'
 const PORT = 3000;
 
 app.listen(PORT, function (err) {

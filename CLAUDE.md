@@ -120,7 +120,7 @@ L'email est envoyé par un cron job Node.js via Nodemailer — cette fonctionnal
 |---|---|---|
 | Backend | Node.js + Express | Maîtrise existante, léger, adapté pour une API REST |
 | Base de données | PostgreSQL | BDD relationnelle — couvre la compétence SQL manquante |
-| ORM | `pg` (driver natif) | Décidé : SQL visible au jury, meilleur pour démontrer CCP2 |
+| ORM | Prisma | Migrations scalables et versionnées, SQL généré visible dans `prisma/migrations/`, `$queryRaw` pour les requêtes complexes (CCP2) |
 | Authentification | JWT (`jsonwebtoken`) + `bcrypt` | Standard industriel, démontrable, bien documenté |
 | Email | Nodemailer + Mailtrap (dev) + SMTP réel (démo) | Intégration réelle, testable en local |
 | Cron | `node-cron` | Simple, intégré au process Node.js |
@@ -238,13 +238,14 @@ jobs:
 
 ---
 
-## Décisions prises (2026-04-29)
+## Décisions prises
 
-| Décision | Choix retenu | Justification |
-|---|---|---|
-| ORM ou driver natif | `pg` natif | SQL brut visible au jury → valide CCP2 "composants d'accès données SQL" |
-| PostgreSQL local ou Docker | Local (pas Docker) | Docker déjà couvert par le projet Osol — pas de doublon |
-| Architecture backend | En couches (routes / controllers / services / db) | Défendable au jury CCP2 "organisée en couches" |
+| Décision | Choix retenu | Justification | Date |
+|---|---|---|---|
+| ORM | Prisma | Système de migrations scalable, fichiers SQL générés visibles au jury, validé par le responsable pédagogique. Une requête `$queryRaw` (JOIN tâches + catégories) couvrira explicitement CCP2. | 2026-05-04 |
+| Gestion du schéma | Migrations Prisma | Remplace `init.sql` — professionnel, versionné, reproductible. Les fichiers générés dans `prisma/migrations/` montrent le SQL réel (MPD pour le dossier). | 2026-05-04 |
+| PostgreSQL local ou Docker | Local (pas Docker) | Docker déjà couvert par le projet Osol — pas de doublon | 2026-04-29 |
+| Architecture backend | En couches (routes / controllers / services / db) | Défendable au jury CCP2 "organisée en couches" | 2026-04-29 |
 
 ## Décisions ouvertes (à trancher par Alex)
 
