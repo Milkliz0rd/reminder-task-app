@@ -27,6 +27,8 @@ model Category {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
   tasks Task[]
+
+  @@unique([userId, name])
 }
 
 model Task {

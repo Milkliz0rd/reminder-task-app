@@ -366,12 +366,14 @@ task-reminder/
 - [x] Rate limiting sur `/auth/login` ✅ 2026-05-06
 - [x] **DOSSIER** — Rédigé : `dossier evalutation/phase2-security.md` ✅ 2026-05-06
 
-### Phase 3 — CRUD tâches · _12 – 18 mai_
-- [ ] Routes CRUD `/tasks`
-- [ ] Isolation par utilisateur (un user ne voit que ses tâches)
-- [ ] Filtres (done, deadline, priorité)
-- [ ] Catégories
-- [ ] **DOSSIER** — Rédiger : composants d'accès données SQL (exemples de requêtes avec JOIN, WHERE, paramètres liés)
+### Phase 3 — CRUD tâches · _12 – 20 mai_ · ✅ Terminée
+- [x] Routes CRUD `/tasks` (POST, GET, PUT, DELETE) ✅ 2026-05-18
+- [x] Isolation par utilisateur (un user ne voit que ses tâches) ✅ 2026-05-18
+- [x] Validation inputs + règle métier deadline dans le futur ✅ 2026-05-18
+- [x] Gestion erreur P2025 → 404 (protection IDOR) ✅ 2026-05-18
+- [x] Filtres (done, deadline, priorité) ✅ 2026-05-19
+- [x] Catégories (CRUD + contrainte unique composite `@@unique([userId, name])`) ✅ 2026-05-20
+- [x] **DOSSIER** — Mis à jour : `dossier evalutation/phase3-crud.md` ✅ 2026-05-20
 
 ### Phase 5 — Tests + CI · _19 – 25 mai_
 - [ ] Tests d'intégration Jest + Supertest (auth + CRUD)

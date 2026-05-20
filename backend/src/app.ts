@@ -1,5 +1,7 @@
-import express from 'express'
-import authRoute from './routes/auth';
+import express from "express";
+import authRoute from "./routes/auth";
+import taskRoute from "./routes/tasks";
+import categoryRoute from "./routes/categories";
 
 const app = express();
 
@@ -7,6 +9,12 @@ const app = express();
 app.use(express.json());
 
 // Use authentification routes
-app.use("/auth", authRoute)
+app.use("/auth", authRoute);
+
+// Category router
+app.use("/categories", categoryRoute);
+
+// Task router
+app.use("/tasks", taskRoute);
 
 export default app;
