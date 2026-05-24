@@ -266,6 +266,8 @@ jobs:
 | ORM | Prisma | Système de migrations scalable, fichiers SQL générés visibles au jury, validé par le responsable pédagogique. Une requête `$queryRaw` (JOIN tâches + catégories) couvrira explicitement CCP2. | 2026-05-04 |
 | Gestion du schéma | Migrations Prisma | Remplace `init.sql` — professionnel, versionné, reproductible. Les fichiers générés dans `prisma/migrations/` montrent le SQL réel (MPD pour le dossier). | 2026-05-04 |
 | PostgreSQL local ou Docker | Local (pas Docker) | Docker déjà couvert par le projet Osol — pas de doublon | 2026-04-29 |
+| Hébergement DB par environnement | **Postgres local (dev + test) sur port 5433** / Neon (prod uniquement, Phase 7) | Pattern **12-Factor App** — séparation stricte par environnement. Neon plan gratuit archive les branches non-default (perte constatée en Phase 5). Postgres local = zéro dépendance externe, démontrable offline au jury. | 2026-05-23 |
+| Port Postgres local | 5433 (pas le 5432 par défaut) | Le port 5432 est occupé par un autre Postgres déjà installé sur la machine — Homebrew Postgres tourne en parallèle sur 5433 sans casser l'existant | 2026-05-23 |
 | Architecture backend | En couches (routes / controllers / services / db) | Défendable au jury CCP2 "organisée en couches" | 2026-04-29 |
 
 ## Décisions ouvertes (à trancher par Alex)
