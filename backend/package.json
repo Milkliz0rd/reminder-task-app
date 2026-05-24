@@ -12,7 +12,8 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --passWithNoTests",
     "lint": "eslint src/**/*.ts",
     "migrate:dev": "dotenv -e .env -- prisma migrate deploy",
-    "migrate:test": "dotenv -e .env.test -- prisma migrate deploy"
+    "migrate:test": "dotenv -e .env.test -- prisma migrate deploy",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
