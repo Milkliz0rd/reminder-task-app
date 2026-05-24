@@ -377,11 +377,14 @@ task-reminder/
 - [x] Catégories (CRUD + contrainte unique composite `@@unique([userId, name])`) ✅ 2026-05-20
 - [x] **DOSSIER** — Mis à jour : `dossier evalutation/phase3-crud.md` ✅ 2026-05-20
 
-### Phase 5 — Tests + CI · _19 – 25 mai_
-- [ ] Tests d'intégration Jest + Supertest (auth + CRUD)
-- [ ] Test injection SQL explicite
-- [ ] Pipeline GitHub Actions finalisé (lint + tests)
-- [ ] **DOSSIER** — Rédiger : plan de tests complet + jeu d'essai rempli avec résultats obtenus
+### Phase 5 — Tests + CI · _19 – 25 mai_ · ✅ Terminée
+- [x] Tests d'intégration Jest + Supertest (auth + CRUD) — 14 tests ✅ 2026-05-24
+- [x] Test injection SQL explicite (OWASP A03) ✅ 2026-05-24
+- [x] Pipeline GitHub Actions finalisé (service Postgres + migrate deploy + postinstall Prisma) ✅ 2026-05-24
+- [x] Migration Neon → PostgreSQL local (dev + test, port 5433) — pattern 12-Factor ✅ 2026-05-23
+- [x] **DOSSIER** — Rédigé : `dossier evalutation/phase5-tests.md` (plan de tests + jeu d'essai + 6 questions jury) ✅ 2026-05-24
+- [x] **DOSSIER** — Rédigé : `dossier evalutation/anecdotes-jury.md` (2 anecdotes formalisées : bug updateTask, postinstall Prisma) ✅ 2026-05-24
+- [ ] **À FAIRE avant rendu jury** : insérer la capture d'écran du pipeline vert dans `phase5-tests.md` section 9
 
 ### Phase 4 — Email · _26 – 31 mai_
 - [ ] Configurer Nodemailer (Mailtrap en dev)
