@@ -98,7 +98,15 @@ Aucune concaténation de chaîne n'est utilisée dans les requêtes — la valeu
 
 **Mesure prise :** Un middleware de validation vérifie que `email` et `password` sont présents et non vides avant d'atteindre le controller. Les requêtes invalides sont rejetées avec un 400 avant tout accès à la base.
 
-> ⚠️ *Ce middleware sera implémenté en Phase 3 — à documenter avec extrait de code après implémentation.*
+**Extrait de code** (`src/controllers/authController.ts` et `src/controllers/taskController.ts`) :
+```ts
+if (!taskData.title) {
+  return response.status(400).json({ message: "title is required" })
+}
+if (!taskData.deadline) {
+  return response.status(400).json({ message: "deadline is required" })
+}
+```
 
 ---
 
@@ -122,5 +130,5 @@ Aucune concaténation de chaîne n'est utilisée dans les requêtes — la valeu
 | 2 | Cryptographic Failures | A02:2021 | JWT expiration 1h + secret en .env | ✅ |
 | 3 | Identification and Auth Failures | A07:2021 | Rate limit 10 req/15min sur /login | ✅ |
 | 4 | Injection | A03:2021 | Requêtes Prisma paramétrées | ✅ |
-| 5 | Injection | A03:2021 | Validation des inputs (middleware) | ⏳ Phase 3 |
-| 6 | Security Misconfiguration | A05:2021 | CORS restreint au domaine frontend | ⏳ Déploiement |
+| 5 | Injection | A03:2021 | Validation des inputs (controller) | ✅ |
+| 6 | Security Misconfiguration | A05:2021 | CORS restreint au domaine frontend | ⏳ Phase 7 — Déploiement |

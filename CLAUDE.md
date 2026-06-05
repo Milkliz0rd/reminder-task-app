@@ -386,12 +386,12 @@ task-reminder/
 - [x] **DOSSIER** — Rédigé : `dossier evalutation/anecdotes-jury.md` (2 anecdotes formalisées : bug updateTask, postinstall Prisma) ✅ 2026-05-24
 - [ ] **À FAIRE avant rendu jury** : insérer la capture d'écran du pipeline vert dans `phase5-tests.md` section 9
 
-### Phase 4 — Email · _26 – 31 mai_
-- [ ] Configurer Nodemailer (Mailtrap en dev)
-- [ ] Template email récapitulatif
-- [ ] Cron job quotidien `node-cron`
-- [ ] Test de la fonction en live
-- [ ] **DOSSIER** — Rédiger : description fonctionnelle feature cron/email
+### Phase 4 — Email · _26 – 31 mai_ · ✅ Terminée
+- [x] Configurer Nodemailer (Mailtrap en dev) ✅ 2026-05-28
+- [x] Template email récapitulatif (3 sections conditionnelles : retard / jour / à venir) ✅ 2026-05-28
+- [x] Cron job quotidien `node-cron` (8h00 tous les jours) ✅ 2026-05-28
+- [x] Test de la fonction en live (email reçu dans Mailtrap) ✅ 2026-05-28
+- [x] **DOSSIER** — Rédigé : `dossier evalutation/phase4-email.md` ✅ 2026-05-28
 
 > ✅ **10 juin — Rendu premier jet du dossier** (phases 1 à 5 couvertes)
 

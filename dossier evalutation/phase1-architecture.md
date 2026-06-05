@@ -27,7 +27,7 @@ Chaque couche a une responsabilité unique (principe de responsabilité unique).
 | Node.js + Express | Serveur HTTP | Maîtrise existante, léger, adapté aux APIs REST |
 | TypeScript | Langage | Typage statique, détection d'erreurs à la compilation, standard industrie |
 | Prisma 7 | ORM + migrations | Système de migrations versionné, standard dans l'écosystème Node.js/NestJS, fichiers SQL générés visibles |
-| PostgreSQL (Neon) | Base de données | BDD relationnelle — couvre la compétence SQL manquante (CCP2) |
+| PostgreSQL | Base de données | BDD relationnelle — couvre la compétence SQL manquante (CCP2). Local (port 5433) en dev + test, Neon en prod (Phase 7) — pattern 12-Factor App |
 | JWT + bcrypt | Authentification | Standard industriel, sécurisé, démontrable |
 | Nodemailer + node-cron | Email + planification | Intégration réelle, testable en live devant le jury |
 | GitHub Actions | CI/CD | Pipeline automatisé : lint + tests à chaque push sur main |
