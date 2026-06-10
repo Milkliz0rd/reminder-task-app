@@ -1,0 +1,220 @@
+// _app-shell.scss — Coquille de l'application authentifiée :
+// sidebar + topbar + zone de contenu scrollable. (Sidebar/topbar = jeudi.)
+
+.mt-app {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 760px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+// --- Sidebar ---
+.mt-side {
+  width: 236px;
+  flex: 0 0 236px;
+  background: var(--rail);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 14px;
+  gap: 4px;
+}
+
+.mt-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 6px 8px 16px;
+}
+
+.mt-newbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 4px 14px;
+  padding: 12px;
+  border: none;
+  border-radius: 13px;
+  background: var(--grad-btn);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px oklch(0.6 0.21 280 / 0.4);
+  transition: transform 0.12s, filter 0.12s;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+  }
+  span {
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+
+.mt-navsec {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rail-ink2);
+  padding: 14px 12px 7px;
+}
+
+.mt-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mt-navitem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 12px;
+  border-radius: 11px;
+  color: var(--rail-ink);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.12s, color 0.12s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+  &.active {
+    background: var(--grad-btn);
+    color: #fff;
+    box-shadow: 0 6px 14px oklch(0.6 0.21 280 / 0.4);
+  }
+  svg {
+    flex: 0 0 auto;
+  }
+  .mt-nlabel {
+    flex: 1;
+  }
+  .mt-ncount {
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--rail-ink);
+
+    &.alert {
+      background: var(--danger);
+      color: #fff;
+    }
+  }
+  &.active .mt-ncount {
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+  }
+}
+
+.mt-catdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.mt-side-foot {
+  margin-top: auto;
+}
+
+.mt-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.09);
+  }
+}
+
+.mt-uav {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--g3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+
+.mt-uname {
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+}
+.mt-umail {
+  font-size: 11.5px;
+  color: var(--rail-ink2);
+}
+.mt-ucaret {
+  margin-left: auto;
+  color: var(--rail-ink2);
+}
+
+// --- Zone principale ---
+.mt-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 30px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in oklch, var(--panel) 70%, transparent);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.mt-page-t {
+  font-family: var(--titlefont);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.mt-page-s {
+  font-size: 12.5px;
+  color: var(--ink3);
+  margin-top: 1px;
+}
+
+.mt-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 30px 40px;
+
+  @media (max-width: 880px) {
+    padding: 18px 18px 32px;
+  }
+}

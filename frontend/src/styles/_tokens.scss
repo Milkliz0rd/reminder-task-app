@@ -1,0 +1,80 @@
+// _tokens.scss — Design tokens du système "Matin".
+// On utilise des custom properties CSS (et non des variables Sass) car elles
+// permettent le basculement clair/sombre à l'EXÉCUTION via la classe .matin.dark.
+// Sass nous sert ici à la structure (partials, nesting) ; le theming reste en CSS natif.
+
+.matin {
+  --rail: #0f1226;
+  --rail-ink: #c7cae6;
+  --rail-ink2: #7e83a8;
+  --panel: #f5f6fc;
+  --card: #ffffff;
+  --card2: #fafbff;
+  --ink: #15172b;
+  --ink2: #5a5e7a;
+  --ink3: #9094b0;
+  --line: #ebecf4;
+  --line2: #e2e4f0;
+  --field: #f3f4fb;
+  --g1: oklch(0.62 0.21 258);
+  --g2: oklch(0.58 0.22 300);
+  --g3: oklch(0.66 0.2 350);
+  --grad: linear-gradient(125deg, var(--g1), var(--g2) 55%, var(--g3));
+  --grad-btn: linear-gradient(135deg, var(--g1), var(--g2));
+  --accent: oklch(0.55 0.2 272);
+  --accent-soft: oklch(0.95 0.04 268);
+  --accent-ink: oklch(0.5 0.18 272);
+  --danger: oklch(0.6 0.21 18);
+  --danger-soft: oklch(0.95 0.04 18);
+  --warn: oklch(0.7 0.16 70);
+  --warn-soft: oklch(0.95 0.05 75);
+  --warn-ink: oklch(0.52 0.13 65);
+  --ok: oklch(0.64 0.15 165);
+  --ok-soft: oklch(0.95 0.04 165);
+  --cat-travail: oklch(0.6 0.2 258);
+  --cat-perso: oklch(0.64 0.2 350);
+  --cat-maison: oklch(0.62 0.14 165);
+  --cat-sante: oklch(0.6 0.19 300);
+  --shadow: 0 12px 30px oklch(0.55 0.18 280 / 0.12);
+  --radius: 17px;
+  --titlefont: "Space Grotesk", sans-serif;
+
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: var(--ink);
+
+  // Thème sombre : on ne redéfinit QUE les variables qui changent.
+  &.dark {
+    --rail: #06070f;
+    --rail-ink: #c2c6e6;
+    --rail-ink2: #777ca6;
+    --panel: #0a0b16;
+    --card: #14172a;
+    --card2: #171a30;
+    --ink: #eef0ff;
+    --ink2: #a4a9ca;
+    --ink3: #6f7498;
+    --line: #23263f;
+    --line2: #2b2f4a;
+    --field: #1b1e33;
+    --accent: oklch(0.7 0.16 270);
+    --accent-soft: oklch(0.3 0.08 270);
+    --accent-ink: oklch(0.82 0.1 272);
+    --danger: oklch(0.68 0.18 18);
+    --danger-soft: oklch(0.32 0.1 18);
+    --warn: oklch(0.78 0.15 75);
+    --warn-soft: oklch(0.34 0.08 70);
+    --warn-ink: oklch(0.82 0.12 75);
+    --ok: oklch(0.72 0.15 165);
+    --ok-soft: oklch(0.32 0.08 165);
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  }
+
+  &,
+  & * {
+    box-sizing: border-box;
+  }
+
+  button {
+    font-family: inherit;
+  }
+}

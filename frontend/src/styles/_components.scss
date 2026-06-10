@@ -1,0 +1,318 @@
+// _components.scss — Briques réutilisables : recherche, modale (création/édition),
+// segments de priorité, select, toasts. (Utilisées à partir de jeudi.)
+
+// --- Recherche / boutons d'icône (topbar) ---
+.mt-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 13px;
+  width: 240px;
+  color: var(--ink3);
+
+  input {
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+    font-size: 13.5px;
+    color: var(--ink);
+    width: 100%;
+  }
+}
+.mt-top-r {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mt-iconbtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: background 0.12s;
+
+  &:hover {
+    background: var(--field);
+  }
+}
+
+// --- Modale ---
+.mt-overlay {
+  position: absolute;
+  inset: 0;
+  background: oklch(0.2 0.04 270 / 0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 20px;
+  z-index: 50;
+  overflow-y: auto;
+}
+.mt-modal {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(10, 12, 30, 0.4);
+  overflow: hidden;
+  animation: mtpop 0.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+@keyframes mtpop {
+  from {
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    transform: none;
+  }
+}
+.mt-modal-h {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.mt-modal-ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--grad-btn);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.mt-modal-t {
+  font-family: var(--titlefont);
+  font-weight: 700;
+  font-size: 18px;
+}
+.mt-modal-s {
+  font-size: 12.5px;
+  color: var(--ink3);
+  margin-top: 1px;
+}
+.mt-modal-x {
+  margin-left: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: none;
+  background: var(--field);
+  color: var(--ink2);
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: var(--line);
+  }
+}
+.mt-modal-b {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mt-modal-f {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--line);
+  background: var(--card2);
+
+  .grow {
+    flex: 1;
+  }
+}
+
+// --- Segments de priorité (dans la modale) ---
+.mt-seg {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.mt-segbtn {
+  flex: 1;
+  min-width: 90px;
+  border: 1.5px solid var(--line2);
+  background: var(--field);
+  border-radius: 11px;
+  padding: 10px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: all 0.12s;
+
+  b {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: block;
+  }
+  &.sel {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+
+    &.p-haute {
+      border-color: var(--danger);
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+    &.p-moyenne {
+      border-color: var(--warn);
+      background: var(--warn-soft);
+      color: var(--warn-ink);
+    }
+  }
+}
+
+// --- Champs textarea / select ---
+.mt-textarea {
+  width: 100%;
+  min-height: 78px;
+  resize: vertical;
+  border: 1px solid var(--line2);
+  background: var(--field);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  line-height: 1.5;
+
+  &:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+}
+.mt-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.mt-select {
+  width: 100%;
+  border: 1px solid var(--line2);
+  background: var(--field);
+  border-radius: 12px;
+  padding: 12px 14px;
+  padding-right: 38px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239094b0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+}
+
+// --- Boutons secondaires de la modale ---
+.mt-del {
+  border: none;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 11px 15px;
+  border-radius: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.mt-btn-2 {
+  border: 1px solid var(--line2);
+  background: var(--card);
+  color: var(--ink2);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 18px;
+  border-radius: 11px;
+  cursor: pointer;
+}
+.mt-btn-1 {
+  border: none;
+  background: var(--grad-btn);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 22px;
+  border-radius: 11px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px oklch(0.6 0.21 280 / 0.35);
+}
+
+// --- Toasts ---
+.mt-toasts {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 60;
+  align-items: center;
+}
+.mt-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 13px;
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  animation: mtslide 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ok);
+  }
+}
+.matin.dark .mt-toast {
+  background: var(--card);
+  border: 1px solid var(--line2);
+}
+@keyframes mtslide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,21 @@
+// _base.scss — Reset global + canevas sombre.
+// Ces règles sont volontairement HORS du scope .matin : elles préparent le terrain
+// (hauteur plein écran + fond) avant que le système "Matin" ne prenne le relais.
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: #0a0b16; // = --panel en thème sombre
+  -webkit-font-smoothing: antialiased;
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+}
+
+// .matin doit remplir la hauteur pour que .mt-auth (height:100%) fonctionne.
+.matin {
+  height: 100%;
+}

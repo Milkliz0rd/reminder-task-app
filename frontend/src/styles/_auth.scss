@@ -1,0 +1,258 @@
+// _auth.scss — Écrans de connexion / inscription (layout deux panneaux).
+
+.mt-auth {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 760px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+// --- Panneau gauche : pitch dégradé (masqué en mobile) ---
+.mt-auth-left {
+  flex: 0 0 46%;
+  position: relative;
+  overflow: hidden;
+  background: var(--grad);
+  color: #fff;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 880px) {
+    display: none;
+  }
+}
+
+.mt-auth-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(12px);
+  opacity: 0.5;
+
+  &.a {
+    width: 320px;
+    height: 320px;
+    background: oklch(0.74 0.16 200 / 0.55);
+    top: -80px;
+    right: -60px;
+  }
+  &.b {
+    width: 260px;
+    height: 260px;
+    background: oklch(0.7 0.2 340 / 0.5);
+    bottom: -60px;
+    left: -40px;
+  }
+}
+
+.mt-auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  position: relative;
+
+  .mt-brandname {
+    font-size: 21px;
+  }
+}
+
+// Logo : pastille dégradée + point blanc en ::after (aucun SVG nécessaire).
+.mt-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: var(--grad-btn);
+  position: relative;
+  flex: 0 0 auto;
+  box-shadow: 0 6px 16px oklch(0.6 0.21 280 / 0.5);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 5px 0 -3px rgba(255, 255, 255, 0.55);
+  }
+}
+
+.mt-brandname {
+  font-family: var(--titlefont);
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.mt-auth-pitch {
+  margin-top: auto;
+  position: relative;
+}
+
+.mt-auth-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 14px;
+}
+
+.mt-auth-h {
+  font-family: var(--titlefont);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+
+  span {
+    background: linear-gradient(90deg, #a9f0ff, #ffd6f4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.mt-auth-sub {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 14px;
+  max-width: 380px;
+}
+
+.mt-auth-feats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.mt-auth-feat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 500;
+
+  .ic {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    font-size: 16px;
+  }
+}
+
+// --- Panneau droit : la carte de formulaire ---
+.mt-auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.mt-auth-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.mt-auth-tt {
+  font-family: var(--titlefont);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+}
+
+.mt-auth-ts {
+  font-size: 14px;
+  color: var(--ink2);
+  margin-top: 7px;
+
+  a {
+    color: var(--accent);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+// --- Formulaire ---
+.mt-form {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mt-field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink2);
+  margin-bottom: 7px;
+}
+
+.mt-input {
+  width: 100%;
+  border: 1px solid var(--line2);
+  background: var(--field);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+
+  &::placeholder {
+    color: var(--ink3);
+  }
+  &:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+}
+
+.mt-btn-primary {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 13px;
+  background: var(--grad-btn);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 10px 22px oklch(0.6 0.21 280 / 0.35);
+  transition: transform 0.12s, filter 0.12s;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+  }
+}
+
+// Message d'erreur (ajout réel de l'app — absent de la maquette).
+.mt-error {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
