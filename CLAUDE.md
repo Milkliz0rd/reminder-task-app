@@ -199,6 +199,14 @@ updated_at
 - Partage de tâches entre utilisateurs
 - Notifications push
 - Application mobile
+- **Connexion via OAuth Google** (on reste sur JWT email/mot de passe — décidé 2026-06-05)
+- **Mot de passe oublié / réinitialisation par email** (reporté après V1 — décidé 2026-06-05)
+- **"Se souvenir de moi"** (le JWT expire en 1h en dur — décidé 2026-06-05)
+- **Champ "Nom complet" à l'inscription** (le modèle `User` reste `email` + `password_hash` uniquement — décidé 2026-06-05)
+- **Cloche de notifications** dans le dashboard (décorative, pas de backend — décidé 2026-06-05)
+
+> Décisions issues du tri de la maquette Bonmatin (Claude Design) vs le backend réel.
+> Maquettes ajustées en conséquence dans `maquette/app/`. Nom retenu pour l'app : **Bonmatin**.
 
 ---
 

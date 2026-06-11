@@ -116,9 +116,22 @@ if (!taskData.deadline) {
 
 **Menace :** Sans configuration CORS, n'importe quel site peut envoyer des requêtes à l'API au nom d'un utilisateur connecté (attaque CSRF-like via navigateur). Autoriser `*` en production expose l'API à tous les domaines.
 
-**Mesure prise :** Le middleware `cors` restreint les origines acceptées à l'URL du frontend uniquement (variable d'environnement `FRONTEND_URL`). En développement, `http://localhost:5173` est autorisé.
+**Mesure prise :** Le middleware `cors` restreint les origines acceptées à l'URL du frontend uniquement (variable d'environnement `FRONTEND_URL`). En développement, `http://localhost:5173` est autorisé. On n'utilise **jamais** `origin: "*"`, qui ouvrirait l'API à n'importe quel site depuis un navigateur.
 
-> ⚠️ *La configuration CORS sera implémentée avant le déploiement — à documenter avec extrait de code.*
+**Extrait de code** (`src/app.ts`) :
+```ts
+import cors from "cors"
+
+// Placé AVANT les routes : un middleware Express s'exécute de haut en bas,
+// il doit poser ses en-têtes avant que les routes ne répondent.
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL, // ex: http://localhost:5173
+  })
+)
+```
+
+**À l'oral :** le CORS est appliqué par le **navigateur**, pas par le serveur — ce n'est pas un pare-feu. L'API répond toujours ; c'est le navigateur qui, en lisant l'en-tête `Access-Control-Allow-Origin`, autorise ou bloque la **lecture** de la réponse par le JavaScript de la page. Un appel direct via `curl` ou Postman n'est donc pas concerné. Le CORS protège l'utilisateur contre un site tiers qui tenterait d'agir en son nom depuis son navigateur ; la protection de l'API contre un appel direct, c'est le **middleware JWT** qui l'assure.
 
 ---
 
@@ -131,4 +144,4 @@ if (!taskData.deadline) {
 | 3 | Identification and Auth Failures | A07:2021 | Rate limit 10 req/15min sur /login | ✅ |
 | 4 | Injection | A03:2021 | Requêtes Prisma paramétrées | ✅ |
 | 5 | Injection | A03:2021 | Validation des inputs (controller) | ✅ |
-| 6 | Security Misconfiguration | A05:2021 | CORS restreint au domaine frontend | ⏳ Phase 7 — Déploiement |
+| 6 | Security Misconfiguration | A05:2021 | CORS restreint au domaine frontend (`FRONTEND_URL`) | ✅ |
